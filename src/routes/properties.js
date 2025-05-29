@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
     await redisClient.set(cacheKey, JSON.stringify(property), 'EX', 3600);
     res.json(property);
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error.message });
   }
 });
 
